@@ -1,0 +1,14 @@
+_id,naziv,godina,velicina_KB,zanr[0],zanr[1],zanr[2],broj_igraca,regija,izdavac,spremanje,CRC,varijante[0].regija,varijante[1].regija,varijante[2].regija,varijante[0].godina,varijante[1].godina,varijante[2].godina,platforma
+68f3a1de1d7059b6743d9598,Super Mario Land,1989,37,platformer,,,1,JP,Nintendo,false,2c27ec70,NA,EU,AU,1989,1990,1990,Game Boy
+68f8dfde028f8810a948c98d,Spider-Man 2,1992,73,akcijska,platformer,borilačka,1,NA,LJN Entertainment,false,13dd233f,EU,,,1992,,,Game Boy
+68f8e03b028f8810a948c98e,Teenage Mutant Ninja Turtles II: Back from the Sewers,1991,157,akcijska,platformer,,1,JP,Konami,true,cf24506c,NA,EU,,1991,1992,,Game Boy
+68f8e3dd028f8810a948c990,Dragon Warrior III,2000,1860,igra uloga,,,1,JP,Enix,true,0fd9c59c,NA,,,2001,,,Game Boy Color
+68f8e420028f8810a948c991,Mario Golf,1999,1020,sportska,,,4,JP,Nintendo,true,a132417d,NA,PAL,,1999,1999,,Game Boy Color
+68f8e63e028f8810a948c992,Dragon Ball Z: Legendary Super Warriors,2002,632,borilačka,kartaška,,2,EU,Infogrames Europe,true,7bf836db,JP,NA,,2002,2002,,Game Boy Color
+68f8ea65028f8810a948c993,Teenage Mutant Ninja Turtles,2003,3620,akcijska,borilačka,,1,NA,Konami,true,15bdf0ad,EU,,,2003,,,Game Boy Advance
+68f8ed72028f8810a948c995,Doom,2001,2790,akcijska,pucačina,horor,1,NA,id Software,true,58c641b3,,,,,,,Game Boy Advance
+68f8ed89028f8810a948c996,Final Fantasy IV Advance,2005,4870,igra uloga,akcijska,,1,NA,Nintendo,true,27f2bc67,JP,AU,EU,2005,2006,2006,Game Boy Advance
+68f8ef12028f8810a948c997,Pokemon: Ruby Version,2002,4580,igra uloga,,,4,JP,The Pokemon Company,true,aeac73e6,NA,AU,EU,2003,2003,2004,Game Boy Advance
+68f8f051028f8810a948c998,Tetris,1989,20,arkadna,logička,,1,JP,Nintendo,false,46df91ad,NA,PAL,,1989,1990,,Game Boy
+68f8f190028f8810a948c999,Montezuma's Return!,1998,143,akcijska,avanturistička,,1,EU,Take-Two Interactive,true,e7ac155b,,,,,,,Game Boy
+68f8f95f028f8810a948c99a,Super Mario Bros. Deluxe,1999,328,platformer,,,2,NA,Nintendo,true,62bbae83,UK,JP,,1999,2000,,Game Boy Color

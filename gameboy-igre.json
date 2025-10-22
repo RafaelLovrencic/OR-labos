@@ -1,0 +1,343 @@
+[{
+  "_id": {
+    "$oid": "68f3a1de1d7059b6743d9598"
+  },
+  "naziv": "Super Mario Land",
+  "godina": 1989,
+  "velicina_KB": 37,
+  "zanr": [
+    "platformer"
+  ],
+  "broj_igraca": 1,
+  "regija": "JP",
+  "izdavac": "Nintendo",
+  "spremanje": false,
+  "CRC": "2c27ec70",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 1989
+    },
+    {
+      "regija": "EU",
+      "godina": 1990
+    },
+    {
+      "regija": "AU",
+      "godina": 1990
+    }
+  ],
+  "platforma": "Game Boy"
+},
+{
+  "_id": {
+    "$oid": "68f8dfde028f8810a948c98d"
+  },
+  "naziv": "Spider-Man 2",
+  "godina": 1992,
+  "velicina_KB": 73,
+  "zanr": [
+    "akcijska",
+    "platformer",
+    "borilačka"
+  ],
+  "broj_igraca": 1,
+  "regija": "NA",
+  "izdavac": "LJN Entertainment",
+  "spremanje": false,
+  "CRC": "13dd233f",
+  "varijante": [
+    {
+      "regija": "EU",
+      "godina": 1992
+    }
+  ],
+  "platforma": "Game Boy"
+},
+{
+  "_id": {
+    "$oid": "68f8e03b028f8810a948c98e"
+  },
+  "naziv": "Teenage Mutant Ninja Turtles II: Back from the Sewers",
+  "godina": 1991,
+  "velicina_KB": 157,
+  "zanr": [
+    "akcijska",
+    "platformer"
+  ],
+  "broj_igraca": 1,
+  "regija": "JP",
+  "izdavac": "Konami",
+  "spremanje": true,
+  "CRC": "cf24506c",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 1991
+    },
+    {
+      "regija": "EU",
+      "godina": 1992
+    }
+  ],
+  "platforma": "Game Boy"
+},
+{
+  "_id": {
+    "$oid": "68f8e3dd028f8810a948c990"
+  },
+  "naziv": "Dragon Warrior III",
+  "godina": 2000,
+  "velicina_KB": 1860,
+  "zanr": [
+    "igra uloga"
+  ],
+  "broj_igraca": 1,
+  "regija": "JP",
+  "izdavac": "Enix",
+  "spremanje": true,
+  "CRC": "0fd9c59c",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 2001
+    }
+  ],
+  "platforma": "Game Boy Color"
+},
+{
+  "_id": {
+    "$oid": "68f8e420028f8810a948c991"
+  },
+  "naziv": "Mario Golf",
+  "godina": 1999,
+  "velicina_KB": 1020,
+  "zanr": [
+    "sportska"
+  ],
+  "broj_igraca": 4,
+  "regija": "JP",
+  "izdavac": "Nintendo",
+  "spremanje": true,
+  "CRC": "a132417d",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 1999
+    },
+    {
+      "regija": "PAL",
+      "godina": 1999
+    }
+  ],
+  "platforma": "Game Boy Color"
+},
+{
+  "_id": {
+    "$oid": "68f8e63e028f8810a948c992"
+  },
+  "naziv": "Dragon Ball Z: Legendary Super Warriors",
+  "godina": 2002,
+  "velicina_KB": 632,
+  "zanr": [
+    "borilačka",
+    "kartaška"
+  ],
+  "broj_igraca": 2,
+  "regija": "EU",
+  "izdavac": "Infogrames Europe",
+  "spremanje": true,
+  "CRC": "7bf836db",
+  "varijante": [
+    {
+      "regija": "JP",
+      "godina": 2002
+    },
+    {
+      "regija": "NA",
+      "godina": 2002
+    }
+  ],
+  "platforma": "Game Boy Color"
+},
+{
+  "_id": {
+    "$oid": "68f8ea65028f8810a948c993"
+  },
+  "naziv": "Teenage Mutant Ninja Turtles",
+  "godina": 2003,
+  "velicina_KB": 3620,
+  "zanr": [
+    "akcijska",
+    "borilačka"
+  ],
+  "broj_igraca": 1,
+  "regija": "NA",
+  "izdavac": "Konami",
+  "spremanje": true,
+  "CRC": "15bdf0ad",
+  "varijante": [
+    {
+      "regija": "EU",
+      "godina": 2003
+    }
+  ],
+  "platforma": "Game Boy Advance"
+},
+{
+  "_id": {
+    "$oid": "68f8ed72028f8810a948c995"
+  },
+  "naziv": "Doom",
+  "godina": 2001,
+  "velicina_KB": 2790,
+  "zanr": [
+    "akcijska",
+    "pucačina",
+    "horor"
+  ],
+  "broj_igraca": 1,
+  "regija": "NA",
+  "izdavac": "id Software",
+  "spremanje": true,
+  "CRC": "58c641b3",
+  "varijante": [],
+  "platforma": "Game Boy Advance"
+},
+{
+  "_id": {
+    "$oid": "68f8ed89028f8810a948c996"
+  },
+  "naziv": "Final Fantasy IV Advance",
+  "godina": 2005,
+  "velicina_KB": 4870,
+  "zanr": [
+    "igra uloga",
+    "akcijska"
+  ],
+  "broj_igraca": 1,
+  "regija": "NA",
+  "izdavac": "Nintendo",
+  "spremanje": true,
+  "CRC": "27f2bc67",
+  "varijante": [
+    {
+      "regija": "JP",
+      "godina": 2005
+    },
+    {
+      "regija": "AU",
+      "godina": 2006
+    },
+    {
+      "regija": "EU",
+      "godina": 2006
+    }
+  ],
+  "platforma": "Game Boy Advance"
+},
+{
+  "_id": {
+    "$oid": "68f8ef12028f8810a948c997"
+  },
+  "naziv": "Pokemon: Ruby Version",
+  "godina": 2002,
+  "velicina_KB": 4580,
+  "zanr": [
+    "igra uloga"
+  ],
+  "broj_igraca": 4,
+  "regija": "JP",
+  "izdavac": "The Pokemon Company",
+  "spremanje": true,
+  "CRC": "aeac73e6",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 2003
+    },
+    {
+      "regija": "AU",
+      "godina": 2003
+    },
+    {
+      "regija": "EU",
+      "godina": 2004
+    }
+  ],
+  "platforma": "Game Boy Advance"
+},
+{
+  "_id": {
+    "$oid": "68f8f051028f8810a948c998"
+  },
+  "naziv": "Tetris",
+  "godina": 1989,
+  "velicina_KB": 20,
+  "zanr": [
+    "arkadna",
+    "logička"
+  ],
+  "broj_igraca": 1,
+  "regija": "JP",
+  "izdavac": "Nintendo",
+  "spremanje": false,
+  "CRC": "46df91ad",
+  "varijante": [
+    {
+      "regija": "NA",
+      "godina": 1989
+    },
+    {
+      "regija": "PAL",
+      "godina": 1990
+    }
+  ],
+  "platforma": "Game Boy"
+},
+{
+  "_id": {
+    "$oid": "68f8f190028f8810a948c999"
+  },
+  "naziv": "Montezuma's Return!",
+  "godina": 1998,
+  "velicina_KB": 143,
+  "zanr": [
+    "akcijska",
+    "avanturistička"
+  ],
+  "broj_igraca": 1,
+  "regija": "EU",
+  "izdavac": "Take-Two Interactive",
+  "spremanje": true,
+  "CRC": "e7ac155b",
+  "varijante": [],
+  "platforma": "Game Boy"
+},
+{
+  "_id": {
+    "$oid": "68f8f95f028f8810a948c99a"
+  },
+  "naziv": "Super Mario Bros. Deluxe",
+  "godina": 1999,
+  "velicina_KB": 328,
+  "zanr": [
+    "platformer"
+  ],
+  "broj_igraca": 2,
+  "regija": "NA",
+  "izdavac": "Nintendo",
+  "spremanje": true,
+  "CRC": "62bbae83",
+  "varijante": [
+    {
+      "regija": "UK",
+      "godina": 1999
+    },
+    {
+      "regija": "JP",
+      "godina": 2000
+    }
+  ],
+  "platforma": "Game Boy Color"
+}]
