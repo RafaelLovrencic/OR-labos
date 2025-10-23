@@ -20,6 +20,8 @@ Svi projekti koji koriste izvorni kod licenciran pod GNU GLP v3 licencijom, mora
 
 # Opći podaci
 
+Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igrama razvijenima za konzole Game Boy, Game Boy Color i Game Boy Advance. Sadrži podatke o nazivima, godinama izdanja, žanrovima, izdavačima, veličini ROM-ova te mogućnosti spremanja stanja igre. Baza je izrađena u sklopu laboratorijskih vježbi kolegija Otvoreno računarstvo Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu te je dostupna u JSON, CSV i BSON formatima pod GNU GPL v3.0 licencijom.
+
 #### Autor: Rafael Lovrenčić
 #### Licencija: GNU GPL v3.0
 #### Verzija: v1.0
@@ -40,9 +42,9 @@ Svi projekti koji koriste izvorni kod licenciran pod GNU GLP v3 licencijom, mora
 | -------     | ---- |
 | naziv       | Službeni naziv videoigre |
 | godina      | Godina izdavanja |
-| veličina_KB | Veličina igre u KB |
+| velicina_KB | Veličina igre u KB |
 | zanr        | Žanr igre |
-| broj_igrača | Maksimalan broj ljudi koji može istovremeno igrati |
+| broj_igraca | Maksimalan broj ljudi koji može istovremeno igrati |
 | regija      | Regija u kojoj je igra najranije izdana |
 | izdavac     | Izdavač igre u regiji gdje je najranije izdana |
 | spremanje   | Podržava li igra spremanje stanja (DA - true / NE - false ) |
