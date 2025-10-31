@@ -51,3 +51,35 @@ Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igra
 | CRC         | Zaštitna suma igre za provjeru integriteta ROM-a |
 | varijante   | Regionalne varijante iste igre s godinom izdavanja |
 | platforma   | Inačica Game Boya za koju je igra dostupna |
+
+# Web aplikacija
+
+Web aplikacija izrađena je kao proširenje prethodne laboratorijske vježbe i omogućuje pregled, filtriranje i preuzimanje podataka iz baze kroz jednostavno i responzivno web sučelje. Cilj aplikacije je povećati pristupačnost i vidljivost skupa podataka putem grafičkog prikaza i strojno čitljivih formata.
+
+### Pokretanje
+
+1. Klonirati repozitorij
+    - git clone https://github.com/RafaelLovrencic/OR-labos.git
+    - **alternativno** skinuti i raspakirati Release v2.0+
+2. napraviti cd u direktorij OR-labos
+3. u komandnu liniju upisati ```npm ci```
+4. pokrenuti aplikaciju s ```npm start```
+5. otvoriti localhost na portu 8080 u web-pregledniku
+
+### Funkcionalnosti
+
+Početna stranica index.html s osnovnim metapodacima o skupu podataka i poveznicama na dostupne formate (CSV i JSON).
+
+Tablični prikaz podataka datatable.html koji dohvaća sadržaj baze podataka asinkrono. 
+
+Filtriranje podataka pomoću jednostavnog HTML obrasca:
+
+- Polje za unos teksta omogućuje pretragu po svim atributima (tzv. wildcard pretraga).
+
+- Padajući izbornik omogućuje sužavanje pretrage na određeni atribut.
+
+- Rezultati se automatski ažuriraju i prikazuju u tablici.
+
+- Preuzimanje trenutnog prikaza u CSV i JSON formatima, uz mogućnost dohvaćanja filtriranih rezultata.
+
+Metapodaci su prikazani u čitljivom obliku na početnoj stranici te u strojno čitljivom obliku putem datoteke schema.json izrađene prema JSON Schema Draft-07 specifikaciji.
