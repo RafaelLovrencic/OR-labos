@@ -34,7 +34,7 @@ Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igra
 
 # Opis baze
 #### Naziv: Katalog Game Boy igara
-#### Opis: Baza podataka s nazivima i detaljima popularnih igara za igraću konzolu Gameboy iz 1989.
+#### Opis: Baza podataka s nazivima i detaljima popularnih igara za igraću konzolu Gameboy iz 1989. i revizije Game Boy Color i Game Boy Advance.
 
 ## Atributi
 
@@ -49,5 +49,5 @@ Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igra
 | izdavac     | Izdavač igre u regiji gdje je najranije izdana |
 | spremanje   | Podržava li igra spremanje stanja (DA - true / NE - false ) |
 | CRC         | Zaštitna suma igre za provjeru integriteta ROM-a |
-| varijante   | Regionalne varijante iste igre s datumom izdavanja |
+| varijante   | Regionalne varijante iste igre s godinom izdavanja |
 | platforma   | Inačica Game Boya za koju je igra dostupna |

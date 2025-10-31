@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <title>Katalog Game Boy igara</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Rafael Lovrenčić">
+        <meta name="keywords" content="katalog, gameboy, Game Boy, igre, videoigre">
+        <meta name="description" content="Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igrama razvijenima za konzole Game Boy, Game Boy Color i Game Boy Advance. Sadrži podatke o nazivima, godinama izdanja, žanrovima, izdavačima, veličini ROM-ova te mogućnosti spremanja stanja igre. Baza je izrađena u sklopu laboratorijskih vježbi kolegija Otvoreno računarstvo Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu te je dostupna u JSON, CSV i BSON formatima pod GNU GPL v3.0 licencijom.">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="text-center"><h1>Katalog Game Boy igara</h1></div>
+        <div class="container">
+            <div id="desna-strana">
+                <div id="opis-baze">
+                    Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igrama razvijenima za konzole Game Boy, Game Boy Color i Game Boy Advance. Sadrži podatke o nazivima, godinama izdanja, žanrovima, izdavačima, veličini ROM-ova te mogućnosti spremanja stanja igre. Baza je izrađena u sklopu laboratorijskih vježbi kolegija Otvoreno računarstvo Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu te je dostupna u JSON, CSV i BSON formatima pod GNU GPL v3.0 licencijom.
+                </div>
+                <table>
+                    <tr>
+                        <th>Atribut</th>
+                        <th>Opis</th>
+                    </tr>
+                    <tr>
+                        <td>naziv</td>
+                        <td>Službeni naziv videoigre</td>
+                    </tr>
+                    <tr>
+                        <td>godina</td>
+                        <td>Godina izdavanja</td>
+                    </tr>
+                    <tr>
+                        <td>velicina_KB</td>
+                        <td>Veličina igre u KB</td>
+                    </tr>
+                    <tr>
+                        <td>zanr</td>
+                        <td>Lista žanrova kojima igra pripada</td>
+                    </tr>
+                    <tr>
+                        <td>broj_igraca</td>
+                        <td>Maksimalan broj ljudi koji može istovremeno igrati</td>
+                    </tr>
+                    <tr>
+                        <td>regija</td>
+                        <td>Regija u kojoj je igra najranije izdana</td>
+                    </tr>
+                    <tr>
+                        <td>izdavac</td>
+                        <td>Izdavač igre u regiji gdje je najranije izdana</td>
+                    </tr>
+                    <tr>
+                        <td>spremanje</td>
+                        <td>Podržava li igra spremanje stanja (DA - true / NE - false)</td>
+                    </tr>
+                    <tr>
+                        <td>CRC</td>
+                        <td>Zaštitna suma igre za provjeru integriteta ROM-a</td>
+                    </tr>
+                    <tr>
+                        <td>varijante</td>
+                        <td>Regionalne varijante iste igre s godinom izdavanja</td>
+                    </tr>
+                    <tr>
+                        <td>platforma</td>
+                        <td>Inačica Game Boya za koju je igra dostupna</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="all-buttons">
+                <div class="buttons">
+                    <a href="gameboy-igre.json" target="_blank">JSON</a>
+                    <a href="gameboy-igre.csv" target="_blank">CSV</a>
+                </div>
+                <div class="buttons">
+                    <a href="/datatable">Pregledaj bazu</a>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div>
+                Autor: Rafael Lovrenčić    
+            </div>
+            <div>
+                Licencija: GNU GPL v3.0    
+            </div>
+            <div>
+                Godina izdavanja: 2025.
+            </div>
+            <div>
+                Verzija: v2.0
+            </div>
+        </footer>
+    </body>
+</html>

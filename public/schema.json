@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kataloga Game Boy igara",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "title": "Igra",
+    "description": "Objekt koji sadrži podatke o Game Boy igri",
+    "properties": {
+      "_id": {
+        "type": "object",
+        "properties": {
+          "$oid": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "$oid"
+        ]
+      },
+      "naziv": {
+        "type": "string",
+        "title": "naziv",
+        "description": "Službeni naziv videoigre"
+      },
+      "godina": {
+        "type": "number",
+        "title": "godina",
+        "description": "Godina izdavanja"
+      },
+      "velicina_KB": {
+        "type": "number",
+        "title": "velicina_KB",
+        "description": "Veličina igre u KB"
+      },
+      "zanr": {
+        "type": "array",
+        "title": "zanr",
+        "description": "Lista žanrova kojoj igra pripada",
+        "items": {
+          "type": "string",
+          "title": "zanr",
+          "description": "Jedan od žanrova igre"
+        }
+      },
+      "broj_igraca": {
+        "type": "number",
+        "title": "broj_igraca",
+        "description": "Maksimalan broj ljudi koji može istovremeno igrati"
+      },
+      "regija": {
+        "type": "string",
+        "title": "regija",
+        "description": "Regija u kojoj je igra najranije izdana"
+      },
+      "izdavac": {
+        "type": "string",
+        "title": "izdavac",
+        "description": "Izdavač igre u regiji gdje je najranije izdana"
+      },
+      "spremanje": {
+        "type": "boolean",
+        "title": "spremanje",
+        "description": "Podržava li igra spremanje stanja (DA - true / NE - false)"
+      },
+      "CRC": {
+        "type": "string",
+        "title": "CRC",
+        "description": "Zaštitna suma igre za provjeru integriteta ROM-a"
+      },
+      "varijante": {
+        "type": "array",
+        "title": "varijante",
+        "description": "Regionalne varijante iste igre s godinom izdavanja",
+        "items": {
+          "type": "object",
+          "title": "varijanta",
+          "description": "regionalna varijanta igre",
+          "properties": {
+            "regija": {
+              "type": "string",
+              "title": "regija",
+              "description": "regija u kojoj je izdana varijanta igre"
+            },
+            "godina": {
+              "type": "number",
+              "title": "godina",
+              "description": "godina kad je izdana regionalna varijanta"
+            }
+          },
+          "required": [
+            "regija",
+            "godina"
+          ]
+        }
+      },
+      "platforma": {
+        "type": "string",
+        "title": "platforma",
+        "description": "Inačica Game Boya za koju je igra dostupna"
+      }
+    },
+    "required": [
+      "_id",
+      "naziv",
+      "godina",
+      "velicina_KB",
+      "zanr",
+      "broj_igraca",
+      "regija",
+      "izdavac",
+      "spremanje",
+      "CRC",
+      "platforma"
+    ]
+  }
+}

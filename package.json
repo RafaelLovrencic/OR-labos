@@ -1,0 +1,32 @@
+{
+  "name": "or-labos",
+  "version": "1.0.0",
+  "description": "Baza Game Boy igara",
+  "keywords": [
+    "gameboy",
+    "katalog",
+    "baza"
+  ],
+  "homepage": "https://github.com/RafaelLovrencic/OR-labos#readme",
+  "bugs": {
+    "url": "https://github.com/RafaelLovrencic/OR-labos/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelLovrencic/OR-labos.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "Rafael",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "csvjson": "^5.1.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
+}

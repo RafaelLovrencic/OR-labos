@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <title>Katalog Game Boy igara</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Rafael Lovrenčić">
+        <meta name="keywords" content="katalog, gameboy, Game Boy, igre, videoigre">
+        <meta name="description" content="Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igrama razvijenima za konzole Game Boy, Game Boy Color i Game Boy Advance. Sadrži podatke o nazivima, godinama izdanja, žanrovima, izdavačima, veličini ROM-ova te mogućnosti spremanja stanja igre. Baza je izrađena u sklopu laboratorijskih vježbi kolegija Otvoreno računarstvo Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu te je dostupna u JSON, CSV i BSON formatima pod GNU GPL v3.0 licencijom.">
+        <link rel="stylesheet" href="/style.css">
+   
+   </head> 
+   <body>
+        <div class="text-center"><h1>Katalog Game Boy igara</h1></div>
+        <div class="container">
+            <div id="desna-strana-DT">
+                <table id="igre-tablica">
+                    <tr>
+                        <th>Naziv</th>
+                        <th>Godina</th>
+                        <th>Velicina_KB</th>
+                        <th>Zanr</th>
+                        <th>Broj_igraca</th>
+                        <th>Regija</th>
+                        <th>Izdavac</th>
+                        <th>Spremanje</th>
+                        <th>CRC</th>
+                        <th>Varijante</th>
+                        <th>Platforma</th>
+                    </tr>
+                </table>
+            </div>
+            <form id="filter-forma">
+                <input type="text" name="param" placeholder="Unesite pojam za pretragu">
+                <select name="cats" id="cats">
+                    <option value="Wildcard">Wildcard (sve kategorije)</option>
+                    <option value="Naziv">Naziv</option>
+                    <option value="Godina">Godina</option>
+                    <option value="Velicina">Veličina_KB</option>
+                    <option value="Zanr">Žanr</option>
+                    <option value="Broj_igraca">Broj_igrača</option>
+                    <option value="Regija">Regija</option>
+                    <option value="Izdavac">Izdavač</option>
+                    <option value="Spremanje">Spremanje</option>
+                    <option value="CRC">CRC</option>
+                    <option value="Varijante">Varijante</option>
+                    <option value="Platforma">Platforma</option>
+                </select>
+                <input type="button" name="filter" value="Filtriraj" onclick="filtriraj();">
+                <input type="button" name="reset" value="Reset" onclick="resetTablice();">
+            </form>
+            <div id="datatable-buttons">
+                <input type="button" value="Izvezi CSV" onclick="spremiFiltrirano('CSV')">
+                <input type="button" value="Izvezi JSON" onclick="spremiFiltrirano('JSON')">
+                <a href="/">Povratak na glavnu stranicu</a>
+            </div>
+        </div>
+        <script src="/main.js"></script>
+   </body>
+</html>

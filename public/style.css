@@ -1,0 +1,203 @@
+h1 {
+    font-size: 5vh;
+    background: #476A6F;
+    color: #FFEEFF;
+    margin-top: 0px;
+}
+
+.text-center {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    background: #476A6F;
+    padding-top: 3vh;
+    padding-left: 5vw;
+    margin-bottom: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+#desna-strana {
+    width: 50%;
+}
+
+#opis-baze {
+    font-size: 2vh;
+    margin-bottom: 30px;
+}
+
+footer {
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #476A6F;
+    color: white;
+    text-align: center;
+}
+
+table {
+    background: #FFEEFF;
+    border-radius: 15px;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid#476A6F 3px;
+    font-size: 2vh;
+}
+
+table th:nth-child(1) {
+    border-radius: 15px 0 0 0;
+}
+
+table th:nth-last-child(1) {
+    border-radius: 0 15px 0 0;
+}
+
+table td {
+    padding: 5px;
+    border: solid #FFEEFF 2px;
+    text-align: center;
+    font-family: Arial;
+}
+
+table th {
+    background: #ECBEB4;
+    padding: 5px;
+    text-align: center;
+    font-family: Arial;
+}
+
+table tr:nth-child(2n + 2) td{
+    border: solid #EDDFED 2px;
+}
+
+table tr:nth-child(2n + 3) {
+    background: #EDDFED;
+}
+
+#igre-tablica th {
+    background: #ECBEB4;
+}
+
+#igre-tablica table.varijante-tablica th {
+    background: #519E8A;
+    color: #FFEEFF;
+}
+
+#all-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.buttons a {
+    font-size: 4vh;
+    background: #7EB09B;
+    padding: 5px;
+    color: #FFEEFF;
+    margin: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+
+#desna-strana-DT {
+    width: 70%;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#datatable-buttons {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#datatable-buttons a {
+    background: #7EB09B;
+    color: #FFEEFF;
+    padding: 5px;
+    font-size: 3vh;
+    border-radius: 10px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    border: solid #476A6F 3px;
+}
+
+#datatable-buttons input[type="button"] {
+    background: #7EB09B;
+    color: #FFEEFF;
+    padding: 5px;
+    font-size: 3vh;
+    border-radius: 10px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    border: solid #476A6F 3px;
+
+}
+
+#filter-forma {
+    margin-left: 20px;
+}
+
+#filter-forma > * {
+    margin-bottom: 10px;
+}
+
+#filter-forma input[type="text"] {
+    height: 40px;
+    background: #C5C9A4;
+    color: #003300;
+    border-radius: 15px;
+}
+
+#filter-forma select {
+    height: 40px;
+    background: #C5C9A4;
+    color: #003300;
+}
+
+#filter-forma input[type="button"] {
+    height: 40px;
+    background: #519E8A;
+    color: #FFEEFF;
+    font-size: 20px;
+}
+
+.floating-notif {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #476A6F;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 9999;
+}
+
+.floating-notif.show {
+    opacity: 1;
+    transform: translateY(0);
+}
