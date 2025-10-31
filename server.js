@@ -10,6 +10,7 @@ var path = require("path");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/dumpovi', express.static('gameboy-igre-dump'));
 const basePath = path.join(__dirname, 'gameboy-igre-dump', 'gameboy-igre.bson');
 
 app.set('views', __dirname + '/views');
