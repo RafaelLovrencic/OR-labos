@@ -24,7 +24,7 @@ Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igra
 
 #### Autor: Rafael Lovrenčić
 #### Licencija: GNU GPL v3.0
-#### Verzija: v1.0
+#### Verzija: v2.0
 #### Jezik: hrvatski
 
 ##### Ključne riječi: gameboy, videoigre, igre
