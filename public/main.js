@@ -66,12 +66,12 @@ function prikaziTablicu(tablica) {
     });
 }
 
-function filtriraj() {
+async function filtriraj() {
     const forma = document.getElementById("filter-forma");
     const formData = new FormData(forma);
 
-    const vrijednostRaw = (formData.get("param") || "").toString().trim();
-    const vrijednost = vrijednostRaw.toLowerCase();
+    const raw = (formData.get("param") || "").toString().trim();
+    const value = raw.toLowerCase();
     const kategorija = formData.get("cats");
 
     const keyMap = {
@@ -93,94 +93,20 @@ function filtriraj() {
         "Wildcard": null
     };
 
-    if (!vrijednost) {
-        filtrirano = igre;
-        prikaziTablicu(filtrirano);
-        return;
-    }
+    const key = keyMap[kategorija] || null;
 
-    const key = keyMap[kategorija] !== undefined ? keyMap[kategorija] : null;
+    const body = {
+        key,
+        value
+    };
 
-    function parseBoolFromString(s) {
-        if (s === null || s === undefined)
-            return null;
-
-        const t = s.toString().trim().toLowerCase();
-        if (["da", "yes", "true", "1"].includes(t))
-            return true;
-        if (["ne", "no", "false", "0"].includes(t))
-            return false;
-
-        return null;
-    }
-
-    if (kategorija === "Wildcard") {
-        filtrirano = igre.filter(igra => {
-            return Object.values(igra).some(v => {
-                if (v === null || v === undefined)
-                    return false;
-
-                if (typeof v === "object") {
-                    try {
-                        return JSON.stringify(v).toLowerCase().includes(vrijednost);
-                    } catch {
-                        return false;
-                    }
-                }
-
-                return String(v).toLowerCase().includes(vrijednost);
-            });
-        });
-
-        prikaziTablicu(filtrirano);
-        return;
-    }
-
-    if (key === "varijante") {
-        filtrirano = igre.filter(igra => {
-            const vs = igra.varijante;
-            if (!Array.isArray(vs) || vs.length === 0) return false;
-            return vs.some(v => {
-                return Object.values(v).some(x => {
-                    if (x === null || x === undefined) return false;
-                    return String(x).toLowerCase().includes(vrijednost);
-                });
-            });
-        });
-
-    prikaziTablicu(filtrirano);
-    return;
-    }
-
-    if (key === "spremanje") {
-        const boolVal = parseBoolFromString(vrijednostRaw);
-        if (boolVal !== null) {
-            filtrirano = igre.filter(igra => Boolean(igra.spremanje) === boolVal);
-        } else {
-            filtrirano = igre.filter(igra => String(igra.spremanje).toLowerCase().includes(vrijednost));
-        }
-
-        prikaziTablicu(filtrirano);
-        return;
-    }
-
-    filtrirano = igre.filter(igra => {
-        const val = igra[key];
-        
-        if (val === null || val === undefined)
-            return false;
-
-        if (typeof val === "object") {
-            try {
-                return JSON.stringify(val).toLowerCase().includes(vrijednost);
-            } catch {
-                return false;
-            }
-        }
-
-        return String(val).toLowerCase().includes(vrijednost);
+    const res = await fetch("/filter", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body)
     });
 
+    filtrirano = await res.json();
     prikaziTablicu(filtrirano);
 }
 
@@ -199,22 +125,36 @@ async function spremiFiltrirano(format) {
         body: JSON.stringify({ format, data: filtrirano })
     });
 
-    const resp = await res.json();
-    const stat = resp.stat;
-
-    if (stat === "succ") {
-        const notif = document.createElement("div");
-        notif.textContent = "Uspješno spremljeno!";
-        notif.className = "floating-notif";
-        document.body.appendChild(notif);
-
-        setTimeout(() => notif.classList.add("show"), 50);
-
-        setTimeout(() => {
-            notif.classList.remove("show");
-            setTimeout(() => notif.remove(), 500);
-        }, 3000);
+    if (!res.ok) {
+        alert("Greška pri preuzimanju datoteke!");
+        return;
     }
+
+    const blob = await res.blob();
+
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = format === "CSV" ? 'filtrirano.csv' : 'filtrirano.json';
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+
+    const notif = document.createElement("div");
+    notif.textContent = "Uspješno preuzeto!";
+    notif.className = "floating-notif";
+    document.body.appendChild(notif);
+
+    setTimeout(() => notif.classList.add("show"), 50);
+
+    setTimeout(() => {
+        notif.classList.remove("show");
+        setTimeout(() => notif.remove(), 500);
+    }, 3000);
 }
 
 initTablice();

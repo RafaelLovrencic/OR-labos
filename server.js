@@ -1,10 +1,25 @@
 const fs = require('fs');
-const { BSON } = require('mongodb');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const csvjson = require('csvjson');
 
 const app = express();
 const PORT = 8080;
+
+const uri = "mongodb+srv://base-user:baseuser@gameboy-games.0ol2dth.mongodb.net/?appName=gameboy-games";
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true
+    }
+});
+
+async function connectToMongo() {
+    await client.connect();
+    console.log("Spojeno na MongoDB!");
+}
+connectToMongo();
 
 var path = require("path");
 
@@ -24,25 +39,100 @@ app.get('/datatable', (req, res) => {
     res.render('datatable.html');
 });
 
-app.get('/api/igre', (req, res) => {
-    const buffer = fs.readFileSync(basePath);
-    const docs = [];
-    let offset = 0;
+app.get('/api/igre', async (req, res) => {
+    try {
+        const db = client.db('gameboy-games');
+        const kolekcija = db.collection('gb-games');
 
-    while (offset < buffer.length) {
-        const docSize = buffer.readInt32LE(offset);
-
-        if (docSize <= 0 || offset + docSize > buffer.length) break;
-
-        const docBuffer = buffer.slice(offset, offset + docSize);
-        const doc = BSON.deserialize(docBuffer);
-
-        docs.push(doc);
-        offset += docSize;
+        const docs = await kolekcija.find({}).toArray();
+        res.json(docs);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Greška pri dohvaćanju igara.' });
     }
-
-    res.json(docs);
 });
+
+app.post("/filter", async (req, res) => {
+    try {
+        const { key, value } = req.body;
+
+        if (!value || value.trim() === "") {
+            const docs = await client
+                .db("gameboy-games")
+                .collection("gb-games")
+                .find({})
+                .toArray();
+            return res.json(docs);
+        }
+
+        const val = value.trim().toLowerCase();
+        const broj = Number(value);
+        const jeBroj = !isNaN(broj);
+        const bool = val === "da" ? true : val === "ne" ? false : null;
+
+        const regex = new RegExp(val, "i");
+
+        const col = client.db("gameboy-games").collection("gb-games");
+
+        if (!key) {
+            const query = {
+                $or: [
+                    { naziv: { $regex: regex } },
+                    { regija: { $regex: regex } },
+                    { izdavac: { $regex: regex } },
+                    { platforma: { $regex: regex } },
+                    { CRC: { $regex: regex } },
+                    ...(jeBroj ? [
+                        { godina: broj },
+                        { velicina_KB: broj },
+                        { broj_igraca: broj }
+                    ] : []),
+                    { zanr: { $elemMatch: { $regex: regex } } },
+                    { varijante: { $elemMatch: { regija: regex } } },
+                    ...(jeBroj ? [{ varijante: { $elemMatch: { godina: broj } } }] : []),
+                    ...(bool !== null ? [{ spremanje: bool }] : [])
+                ]
+            };
+
+            const docs = await col.find(query).toArray();
+            return res.json(docs);
+        }
+
+        let query = {};
+
+        if (["godina", "velicina_KB", "broj_igraca"].includes(key)) {
+            if (jeBroj) query[key] = broj;
+        }
+
+        else if (key === "spremanje") {
+            if (bool !== null) query[key] = bool;
+            else return res.status(400).json({ error: "Vrijednost mora biti DA ili NE." });
+        }
+
+        else if (key === "zanr") {
+            query[key] = { $elemMatch: { $regex: regex } };
+        }
+
+        else if (key === "varijante") {
+            query.$or = [
+                { "varijante.regija": { $regex: regex } },
+                ...(jeBroj ? [{ "varijante.godina": broj }] : [])
+            ];
+        }
+
+        else {
+            query[key] = { $regex: regex };
+        }
+
+        const docs = await col.find(query).toArray();
+        res.json(docs);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Greška u filtraciji" });
+    }
+});
+
 
 app.post('/filter-export', (req, res) => {
     const { format, data } = req.body;
@@ -50,28 +140,21 @@ app.post('/filter-export', (req, res) => {
     if (!data || !Array.isArray(data))
         return res.status(400).send("Neispravni podaci!");
 
-    const exportFolder = path.join(__dirname, 'exports');
-    if (!fs.existsSync(exportFolder))
-        fs.mkdirSync(exportFolder);
-
-    let filePath;
-
     if (format === 'CSV') {
         const csvData = csvjson.toCSV(data, { headers: 'key' });
-        filePath = path.join(exportFolder, `filtrirano.csv`);
-        fs.writeFile(filePath, csvData, err => {
-            if (err)
-                return res.status(500).send("Greška pri spremanju CSV-a!");
-        });
-    } else {
-        filePath = path.join(exportFolder, `filtrirano.json`);
-        fs.writeFile(filePath, JSON.stringify(data, null, 2), err => {
-            if (err)
-                return res.status(500).send("Greška pri spremanju JSON-a!");
-        });
+
+        res.setHeader("Content-Type", "text/csv");
+        res.setHeader("Content-Disposition", "attachment; filename=filtrirano.csv");
+
+        return res.send(csvData);
     }
 
-    res.json( {stat: "succ"} );
+    const jsonData = JSON.stringify(data, null, 2);
+
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Disposition", "attachment; filename=filtrirano.json");
+
+    return res.send(jsonData);
 });
 
 app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));
