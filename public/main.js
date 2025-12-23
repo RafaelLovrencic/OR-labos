@@ -2,8 +2,9 @@ let igre = [];
 let filtrirano = igre; 
 
 async function initTablice() {
-    const res = await fetch("/api/igre");
+    const res = await fetch("/api/v1/igre");
     igre = await res.json();
+    igre = igre.response;
     prikaziTablicu(igre);
 }
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            async function getIgre() {
+                const resp = await fetch('/api/v1/igre/');
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+
+            async function getByID() {
+                const resp = await fetch('/api/v1/igre/6918cd416d2cdf60d61ce4ee');
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+
+            async function getGB() {
+                const resp = await fetch('/api/v1/igre/platforma/GB');
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+
+            async function getGBC() {
+                const resp = await fetch('/api/v1/igre/platforma/GBC');
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+            
+            async function getGBA() {
+                const resp = await fetch('/api/v1/igre/platforma/GBA');
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+
+            async function addDoc() {
+                const resp = await fetch('/api/v1/igre/noviUnos', {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/JSON", 
+                    },
+                    body: JSON.stringify( {
+                        naziv: "testni unos",
+                        godina: 2025,
+                        velicina_KB: 0,
+                        zanr: ["testna"],
+                        broj_igraca: 0,
+                        regija: "EU",
+                        izdavac: "Rafael",
+                        spremanje: false,
+                        CRC: "000000000000",
+                        platforma: "GB"
+                    } )
+                });
+                
+                const respdata = resp.json();
+                console.log(respdata);
+            }
+            
+            async function update() {
+                var id;
+                var igre = await fetch('/api/v1/igre');
+                igre = await igre.json();
+                igre = igre.response;
+
+                igre.forEach(igra => {
+                    if (igra.naziv === "testni unos")
+                        id = igra._id;
+                });
+                
+                const resp = await fetch(`/api/v1/igre/${id}`, 
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            "regija": "BR"
+                        })
+                    }
+                );
+                
+                console.log(await resp.json());
+            }
+            
+            async function deleteItem() {
+                var id;
+                var igre = await fetch('/api/v1/igre');
+                igre = await igre.json();
+                igre = igre.response;
+
+                igre.forEach(igra => {
+                    if (igra.naziv === "testni unos")
+                        id = igra._id;
+                });
+
+                const resp = await fetch(`/api/v1/igre/${id}`, {method: "DELETE"});
+                console.log(await resp.json());
+            }
+        </script>
+        <style>
+            input[type="button"] {
+                height: 30px;
+                width: fit-content;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" onclick="getIgre();" value='fetch igre'></br>
+        <input type="button" onclick="getByID();" value="fetch ID"></br>
+        <input type="button" onclick="getGB();" value="fetch GB"></br>
+        <input type="button" onclick="getGBC();" value="fetch GBC"></br>
+        <input type="button" onclick="getGBA();" value="fetch GBA"></br>
+        <input type="button" onclick="addDoc()" value="add doc"></br>
+        <input type="button" onclick="update();" value="put ID"></br>
+        <input type="button" onclick="deleteItem();" value="delete ID"></br>
+    </body>
+</html>

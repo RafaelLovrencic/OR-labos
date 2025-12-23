@@ -9,10 +9,21 @@ h1 {
     height: 8vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: #476A6F;
     padding-top: 3vh;
     padding-left: 5vw;
     margin-bottom: 15px;
+}
+
+#api-button {
+    margin-right: 15px;
+    font-size: 2rem;
+    background-color: #7EB09B;
+    border-radius: 10px;
+    color: #FFEEFF;
+    padding: 3px;
+    text-decoration: none;
 }
 
 .container {
@@ -48,7 +59,7 @@ table {
     border-spacing: 0;
     border-collapse: separate;
     border: solid#476A6F 3px;
-    font-size: 2vh;
+    font-size: max(1.5vh, 15px);
 }
 
 table th:nth-child(1) {
@@ -116,7 +127,8 @@ table tr:nth-child(2n + 3) {
 
 
 #desna-strana-DT {
-    width: 70%;
+    width: 65%;
+    max-width: 65%;
 }
 
 form {
@@ -127,6 +139,7 @@ form {
 #datatable-buttons {
     display: flex;
     flex-flow: column wrap;
+    max-width: 10%;
 }
 
 #datatable-buttons a {

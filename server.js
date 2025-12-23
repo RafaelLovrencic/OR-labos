@@ -2,31 +2,18 @@ const fs = require('fs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const csvjson = require('csvjson');
+const { client, connectToDB } = require('./mongo');
 
 const app = express();
 const PORT = 8080;
 
-const uri = "mongodb+srv://base-user:baseuser@gameboy-games.0ol2dth.mongodb.net/?appName=gameboy-games";
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true
-    }
-});
-
-async function connectToMongo() {
-    await client.connect();
-    console.log("Spojeno na MongoDB!");
-}
-connectToMongo();
+const api = require("./routes/api.routes");
 
 var path = require("path");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dumpovi', express.static('gameboy-igre-dump'));
-const basePath = path.join(__dirname, 'gameboy-igre-dump', 'gameboy-igre.bson');
 
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -37,19 +24,6 @@ app.get('/', (req, res) => {
 
 app.get('/datatable', (req, res) => {
     res.render('datatable.html');
-});
-
-app.get('/api/igre', async (req, res) => {
-    try {
-        const db = client.db('gameboy-games');
-        const kolekcija = db.collection('gb-games');
-
-        const docs = await kolekcija.find({}).toArray();
-        res.json(docs);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Greška pri dohvaćanju igara.' });
-    }
 });
 
 app.post("/filter", async (req, res) => {
@@ -133,7 +107,6 @@ app.post("/filter", async (req, res) => {
     }
 });
 
-
 app.post('/filter-export', (req, res) => {
     const { format, data } = req.body;
 
@@ -157,4 +130,8 @@ app.post('/filter-export', (req, res) => {
     return res.send(jsonData);
 });
 
-app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));
+app.use("/api", api);
+
+connectToDB().then( () => {
+    app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));
+});
