@@ -24,13 +24,13 @@ Katalog Game Boy igara otvorena je baza podataka koja sadrži informacije o igra
 
 #### Autor: Rafael Lovrenčić
 #### Licencija: GNU GPL v3.0
-#### Verzija: v2.0
+#### Verzija: v4.0
 #### Jezik: hrvatski
 
 ##### Ključne riječi: gameboy, videoigre, igre
 ##### Platforme pokrivene skupom podataka: Game Boy, Game Boy Color, Game Boy Advance
 ##### Formati podataka: JSON, CSV, BSON
-##### Godina izdavanja: 2025.
+##### Godina izdavanja: 2026.
 
 # Opis baze
 #### Naziv: Katalog Game Boy igara
