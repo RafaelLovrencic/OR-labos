@@ -5,6 +5,49 @@ async function initTablice() {
     const res = await fetch("/api/v1/igre");
     igre = await res.json();
     igre = igre.response;
+    
+    const ld = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": igre.map((igra, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@context": {
+                    "@vocab": "http://schema.org/",
+                    "naziv": "name",
+                    "velicina_KB": "fileSize",
+                    "zanr": "genre",
+                    "broj_igraca": "numberOfPlayers",
+                    "izdavac": "publisher",
+                    "platforma": "gamePlatform",
+                },
+                "@type": "VideoGame",
+                "naziv": igra.naziv,
+                "godina": igra.godina,
+                "velicina_KB": `${igra.velicina_KB} KB`,
+                "zanr": igra.zanr.join(';'),
+                "broj_igraca": {
+                    "@type": "QuantitativeValue",
+                    "maxValue": igra.broj_igraca
+                },
+                "regija": igra.regija,
+                "izdavac": {
+                    "@type": "Organization",
+                    "legalName": igra.izdavac
+                },
+                "spremanje": igra.spremanje,
+                "CRC": igra.CRC,
+                "varijante": igra.varijante.map(varijanta => varijanta.regija),
+                "platforma": igra.platforma,
+            }
+        }))
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(ld);
+    document.head.appendChild(script);
     prikaziTablicu(igre);
 }
 

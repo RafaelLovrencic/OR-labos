@@ -3,9 +3,42 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const express = require('express');
 const csvjson = require('csvjson');
 const { client, connectToDB } = require('./mongo');
+const { auth } = require('express-openid-connect');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const PORT = 8080;
+const notAuthedResp = `
+    <DOCTYPE! html>
+    <head>
+        <style>
+            a {
+            font-size: 4vh;
+            background: #7EB09B;
+            padding: 5px;
+            color: #FFEEFF;
+            margin: 10px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Ova radnja zahtjeva autentikaciju. Prijavite se!</h1>
+        <a href='/login'>Prijava</a>
+    </body>
+`;
+
+const authConfig = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.AUTH_SECRET,
+    baseURL: 'http://localhost:8080',
+    clientID: 'FmdhgVUHEHuvb5cLJMHjjOG6UkwbwiWl',
+    issuerBaseURL: 'https://dev-o2ok4g8zbs1f3b5z.us.auth0.com'
+};
 
 const api = require("./routes/api.routes");
 
@@ -14,6 +47,7 @@ var path = require("path");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dumpovi', express.static('gameboy-igre-dump'));
+app.use(auth(authConfig));
 
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -130,8 +164,31 @@ app.post('/filter-export', (req, res) => {
     return res.send(jsonData);
 });
 
+app.get('/profile', (req, res) => {
+    if (req.oidc.isAuthenticated()) {
+        res.render("profile.html");
+    } else {
+        res.status(401).send(notAuthedResp);
+    }
+});
+
+app.get('/user-data', (req, res) => {
+    if (req.oidc.isAuthenticated()) {
+        res.json(req.oidc.user);
+    } else {
+        res.status(401).send(notAuthedResp);
+    }
+});
+
+app.get('/get-auth-status', (req, res) => {
+    res.json({ "status": req.oidc.isAuthenticated() });
+});
+
 app.use("/api", api);
 
-connectToDB().then( () => {
-    app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));
-});
+try {
+    connectToDB();
+} catch (err) {
+    console.log("Greška pri spajanju na bazu.");
+}
+app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));

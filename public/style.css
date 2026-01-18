@@ -125,6 +125,16 @@ table tr:nth-child(2n + 3) {
     text-decoration: none;
 }
 
+.buttons button {
+    font-size: 4vh;
+    background: #7EB09B;
+    padding: 5px;
+    color: #FFEEFF;
+    margin: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
 
 #desna-strana-DT {
     width: 65%;

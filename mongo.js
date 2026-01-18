@@ -1,8 +1,11 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const dotenv = require('dotenv');
 
-const uri = "mongodb+srv://base-user:baseuser@gameboy-games.0ol2dth.mongodb.net/?appName=gameboy-games";
+dotenv.config();
 
-const client = new MongoClient(uri, {
+const url = process.env.MONGO_URL;
+
+const client = new MongoClient(url, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
